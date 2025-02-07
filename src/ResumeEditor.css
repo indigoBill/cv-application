@@ -1,0 +1,77 @@
+.resume-editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.general-style {
+    background-color: pink;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    width: 500px;
+    text-align: center;
+    border-radius: .5em;
+}
+
+.general-info {
+    flex: 1;
+}
+
+.educational-info {
+    flex: 1;
+}
+
+.work-info {
+    flex: 1;
+}
+
+.toggle-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.toggle-switch input:checked+.slider {
+    background-color: pink;
+}
+
+.toggle-switch input:checked+.slider::before {
+    transform: translateX(26px);
+}
