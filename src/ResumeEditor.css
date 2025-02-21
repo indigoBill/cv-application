@@ -3,6 +3,8 @@
     flex-direction: column;
     gap: 10px;
     height: 100%;
+    flex: 1;
+    align-items: center;
 }
 
 .general-style {
@@ -10,7 +12,7 @@
     color: white;
     font-weight: bold;
     font-size: 25px;
-    width: 500px;
+    width: 600px;
     text-align: center;
     border-radius: .5em;
 }
