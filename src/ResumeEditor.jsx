@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './ResumeEditor.css';
 /*
 function ResumeEditorSwitch() {
@@ -14,32 +15,41 @@ function ResumeEditorSwitch() {
 }
 */
 function GeneralInformation() {
-    function editPersonalInfo(){
+    const [generalInformation, setGeneralInformation] = useState({name : 'Test Name', jobTitle : '', email : '', phone : ''});
 
+    function editGeneralInformation(){
+        //PULL INFO FROM RESUME COMPONENT AND FILL FIELDS
+        const newGeneralInformation = {}
+        setGeneralInformation 
     }
-    
+
+    function saveGeneralInformation() {
+        //PUSH INFO FROM FIELDS TO RESUME COMPONENT
+        
+    }   
+
     return (
         <div className='general-style general-info'>
             <h3>GENERAL INFO</h3>
             <div>
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" />
+                <input type="text" id="name" name="name" value={generalInformation.name}/>
             </div>
             <div>
                 <label htmlFor="job-title">Job Title:</label>
-                <input type="text" id="job-title" name="job-title" />
+                <input type="text" id="job-title" name="job-title" value={generalInformation.jobTitle}/>
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" name="email" />
+                <input type="email" id="email" name="email" />
             </div>
             <div>
                 <label htmlFor="phone-number">Phone:</label>
-                <input type="text" id="phone-number" name="phone-number" />
+                <input type="tel" id="phone-number" name="phone-number" />
             </div>
             <div className='edit-btns-container'>
-                <button className='save-personal-btn'>Save</button>
-                <button className='edit-personal-btn' onClick={editPersonalInfo}>Edit</button>
+                <button className='save-personal-btn' onClick={saveGeneralInformation}>Save</button>
+                <button className='edit-personal-btn' onClick={editGeneralInformation}>Edit</button>
             </div>
         </div>
     )
@@ -47,8 +57,8 @@ function GeneralInformation() {
 
 function EducationalExperience() {
     return (
-        <>
-            <div className='general-style educational-info'>
+        <div className='general-style'>
+            <div className='educational-info'>
                 <h3>EDUCATIONAL INFO</h3>
                 <div>
                     <label htmlFor="school-name">School Name:</label>
@@ -73,14 +83,14 @@ function EducationalExperience() {
                 <button className='save-school-btn'>Save</button>
                 <button className='add-school-btn'>Add Education</button>
             </div>
-        </>
+        </div>
     )
 }
 
 function WorkExperience() {
     return (
-        <>
-            <div className='general-style work-info'>
+        <div className='general-style'>
+            <div className='work-info'>
                 <h3>WORK INFO</h3>
                 <div>
                     <label htmlFor="company-name">Company Name:</label>
@@ -109,7 +119,7 @@ function WorkExperience() {
                 <button className='save-work-btn'>Save</button>
                 <button className='add-work-btn'>Add Work</button>
             </div>
-        </>
+        </div>
     )
 }
 
