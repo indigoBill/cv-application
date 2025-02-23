@@ -15,17 +15,6 @@
     width: 600px;
     text-align: center;
     border-radius: .5em;
-}
-
-.general-info {
-    flex: 1;
-}
-
-.educational-info {
-    flex: 1;
-}
-
-.work-info {
     flex: 1;
 }
 
