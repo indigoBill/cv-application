@@ -1,14 +1,19 @@
-import ResumeEditor from './ResumeEditor.jsx'
-import Resume from './Resume.jsx'
+import { useState } from 'react'
+import {Resume, ResumeGeneralInformation} from './Resume.jsx'
 import './App.css'
 
+import EditorGeneralInformation from './GeneralInformation.jsx'
 
 
 function App() {
+  const [resumeNameValue, setResumeNameValue] = useState('');
+
   return (
     <>
-    <ResumeEditor />
-    <Resume />
+    <EditorGeneralInformation updateResumeGI={(id, value) => {if(id=='name') setResumeNameValue(value) } } />
+    <Resume>
+      <ResumeGeneralInformation nameValue={ resumeNameValue } />
+    </Resume>
   </>
   )
 }

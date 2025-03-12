@@ -1,9 +1,9 @@
 import './Resume.css';
 
-function ResumeGeneralInformation() {
+function ResumeGeneralInformation({ nameValue }) {
     return (
         <>
-            <h1 className='resume-name'>1</h1>
+            <h1 className='resume-name'>{nameValue}</h1>
             <h2 className='resume-job-title'>2</h2>
             <h2 className='resume-email'></h2>
             <h2 className='resume-phone'></h2>
@@ -11,12 +11,12 @@ function ResumeGeneralInformation() {
     )
 }
 
-function Resume() {
+function Resume({ children }) {
     return (
         <div className='resume'>
-            <ResumeGeneralInformation />
+            {children}
         </div>
     )
 }
 
-export default Resume;
+export  {Resume, ResumeGeneralInformation};
