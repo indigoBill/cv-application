@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import './ResumeEditor.css';
-import EditorGeneralInformation from './GeneralInformation.jsx'
 
 /*
 function ResumeEditorSwitch() {
@@ -85,15 +83,23 @@ function WorkExperience() {
     )
 }
 
-function ResumeEditor() {
+// function ResumeEditor() {
+//     return (
+//         <div className='resume-editor-container'>
+//             {/* {<ResumeEditorSwitch />} */}
+//             <EditorGeneralInformation />
+//             <EducationalExperience />
+//             <WorkExperience />
+//         </div>
+//     );
+// }
+
+function ResumeEditor({ children }) {
     return (
-        <div className='resume-editor-container'>
-            {/* {<ResumeEditorSwitch />} */}
-            <EditorGeneralInformation />
-            <EducationalExperience />
-            <WorkExperience />
+        <div className='resume-editor'>
+            {children}
         </div>
-    );
+    )
 }
 
 export default ResumeEditor;
