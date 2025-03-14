@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import ResumeEditor from './ResumeEditor.jsx';
-import {Resume, ResumeGeneralInformation} from './Resume.jsx'
-import './App.css'
+import {Resume, ResumeGeneralInformation} from './Resume.jsx';
+import './App.css';
 
-import EditorGeneralInformation from './GeneralInformation.jsx'
+import EditorGeneralInformation from './EditorGeneralInformation.jsx';
+import EditorEducationalExperience from './EditorEducationalExperience.jsx';
+import EditorWorkExperience from './EditorWorkExperience.jsx';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
     <>
       <ResumeEditor>
         <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
+        <EditorEducationalExperience />
+        <EditorWorkExperience />
       </ResumeEditor>
       <Resume>
         <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue}/>
