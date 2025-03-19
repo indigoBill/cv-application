@@ -11,6 +11,14 @@ function ResumeGeneralInformation({ nameValue, jobTitleValue, emailValue, phoneV
     )
 }
 
+function ResumeEducationalInformation({schoolValue}) {
+    return (
+        <>
+            <h1>{schoolValue}</h1>
+        </>
+    )
+}
+
 function Resume({ children }) {
     return (
         <div className='resume'>
@@ -19,4 +27,4 @@ function Resume({ children }) {
     )
 }
 
-export  {Resume, ResumeGeneralInformation};
+export  {Resume, ResumeGeneralInformation, ResumeEducationalInformation};
