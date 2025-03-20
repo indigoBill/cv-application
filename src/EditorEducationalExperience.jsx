@@ -1,53 +1,35 @@
-import { useRef, useState } from 'react';
+let schoolName, titleOfStudy, startDate, endDate;
 
-function EditorEducationalExperience() {
-    const schoolName = useRef(null);
-    const titleOfStudy = useRef(null);
-    const startDate = useRef(null);
-    const endDate = useRef(null);
-    const presentCheckBox = useRef(null);
-
-    const [errorNotice, setErrorNotice] = useState('');
-
-    function confirmFieldValues() {
-
-        if(schoolName.current.value === ''){
-            setErrorNotice('please fill in all fields')
-        }
-    }
+function EditorEducationalExperience({ resumeEducationalInformation }) {
+    
 
     return (
         <div className='general-style'>
+            <h3>EDUCATIONAL INFO</h3>
             <div className='educational-info'>
-                <h3>EDUCATIONAL INFO</h3>
                 <div>
                     <label htmlFor="school-name">School Name:</label>
-                    <input type="text" id="school-name" name="school-name" ref={schoolName} />
+                    <input type="text" id="school-name" name="school-name" onChange={(e) => schoolName = e.target.value}/>
                 </div>
                 <div>
                     <label htmlFor="title-of-study">Title of Study:</label>
-                    <input type="text" id="title-of-study" name="title-of-study" ref={titleOfStudy} />
+                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => titleOfStudy = e.target.value} />
                 </div>
                 <div className='educational-date-range'>
                     <div>
                         <label htmlFor="school-start-date">Start Date:</label>
-                        <input type="date" id="school-start-date" name="school-start-date" ref={startDate} />
+                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => startDate = e.target.value} />
                     </div>
                     <div>
                         <label htmlFor="school-end-date">End Date:</label>
-                        <input type="date" id="school-end-date" name="school-end-date" ref={endDate} />
-                    </div>
-                    <div>
-                        <label htmlFor="present-checkbox">Present:</label>
-                        <input type="checkbox" id="present-checkbox" name="present-checkbox" ref={presentCheckBox} />
+                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => endDate = e.target.value} />
                     </div>
                 </div>
             </div>
             <div className='edit-btns-container'>
-                <button className='save-school-btn' onClick={confirmFieldValues}>Save</button>
+                <button className='save-school-btn' onClick={() => resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate)}>Save</button>
                 <button className='add-school-btn'>Add Education</button>
             </div>
-            <p>{errorNotice}</p>
         </div>
     )
 }

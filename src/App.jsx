@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ResumeEditor from './ResumeEditor.jsx';
-import {Resume, ResumeGeneralInformation} from './Resume.jsx';
+import {Resume, ResumeGeneralInformation, ResumeEducationalInformation} from './Resume.jsx';
 import './App.css';
 
 import EditorGeneralInformation from './EditorGeneralInformation.jsx';
@@ -14,6 +14,8 @@ function App() {
   const [resumeEmailValue, setResumeEmailValue] = useState('');
   const [resumePhoneValue, setResumePhoneValue] = useState(null);
 
+  const [resumeSchoolName, setResumeSchoolName] = useState('');
+
   function updateResumeGeneralInformation(identifier, newValue) {
     if(identifier == 'name') setResumeNameValue(newValue);
     if(identifier == 'job-title') setResumeJobTitleValue(newValue);
@@ -21,15 +23,20 @@ function App() {
     if(identifier == 'phone-number') setResumePhoneValue(newValue);
   }
 
+  function updateResumeEducationalInformation(nameOfSchool) {
+    setResumeSchoolName(nameOfSchool);
+  }
+
   return (
     <>
       <ResumeEditor>
         <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
-        <EditorEducationalExperience />
+        <EditorEducationalExperience resumeEducationalInformation={(schoolName) => updateResumeEducationalInformation((schoolName))} />
         <EditorWorkExperience />
       </ResumeEditor>
       <Resume>
         <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue}/>
+        <ResumeEducationalInformation schoolValue={resumeSchoolName} />
       </Resume>
     </>
   )
