@@ -14,7 +14,7 @@ function App() {
   const [resumeEmailValue, setResumeEmailValue] = useState('');
   const [resumePhoneValue, setResumePhoneValue] = useState(null);
 
-  const [resumeSchoolName, setResumeSchoolName] = useState('');
+  const [resumeEducationalValues, setResumeEducationalValues] = useState(['','','','']);
 
   function updateResumeGeneralInformation(identifier, newValue) {
     if(identifier == 'name') setResumeNameValue(newValue);
@@ -23,20 +23,16 @@ function App() {
     if(identifier == 'phone-number') setResumePhoneValue(newValue);
   }
 
-  function updateResumeEducationalInformation(nameOfSchool) {
-    setResumeSchoolName(nameOfSchool);
-  }
-
   return (
     <>
       <ResumeEditor>
         <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
-        <EditorEducationalExperience resumeEducationalInformation={(schoolName) => updateResumeEducationalInformation((schoolName))} />
+        <EditorEducationalExperience resumeEducationalInformation={(schoolName, titleOfStudy, educationStartDate, educationEndDate) => setResumeEducationalValues([schoolName, titleOfStudy, educationStartDate, educationEndDate])} />
         <EditorWorkExperience />
       </ResumeEditor>
       <Resume>
         <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue}/>
-        <ResumeEducationalInformation schoolValue={resumeSchoolName} />
+        <ResumeEducationalInformation educationalValues={resumeEducationalValues} />
       </Resume>
     </>
   )

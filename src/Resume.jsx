@@ -11,10 +11,20 @@ function ResumeGeneralInformation({ nameValue, jobTitleValue, emailValue, phoneV
     )
 }
 
-function ResumeEducationalInformation({schoolValue}) {
+function ResumeEducationalInformation({educationalValues}) {
+    const schoolNameValue = educationalValues[0];
+    const titleOfStudyValue = educationalValues[1];
+    const startDateValue = educationalValues[2];
+    const endDateValue = educationalValues[3];
+    let dash = '';
+
+    if(startDateValue && endDateValue !== '') dash = '-';
+
     return (
         <>
-            <h1>{schoolValue}</h1>
+            <h1>{schoolNameValue}</h1>
+            <h2>{titleOfStudyValue}</h2>
+            <h2>{startDateValue + dash + endDateValue}</h2>
         </>
     )
 }
