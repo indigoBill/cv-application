@@ -1,7 +1,32 @@
+import { useState } from 'react';
+
 let schoolName, titleOfStudy, startDate, endDate;
+const educationalExperienceInformation = [];
+
+function EducationalExperienceCard({ fields, addEducation }) {
+    return (
+        <div>
+            <h2>{fields.school}</h2>
+            <button>Edit</button>
+            <button className='add-school-btn' onClick={() => addEducation(true)}>Add Education</button>
+        </div>
+    )
+}
 
 function EditorEducationalExperience({ resumeEducationalInformation }) {
-    
+    const [createCard, setCreateCard] = useState(false);
+
+    if(createCard) {
+        return (
+            <div className='general-style'>
+                {
+                    educationalExperienceInformation.map((information, index) => {
+                        return <EducationalExperienceCard key={index} fields={information} addEducation={() => setCreateCard(false)} />
+                    })
+                }
+            </div>
+        );
+    }
 
     return (
         <div className='general-style'>
@@ -27,8 +52,18 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
                 </div>
             </div>
             <div className='edit-btns-container'>
-                <button className='save-school-btn' onClick={() => resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate)}>Save</button>
-                <button className='add-school-btn'>Add Education</button>
+                <button className='save-school-btn' onClick={() => {
+                    const informationCollection = {
+                        school : schoolName,
+                        major : titleOfStudy,
+                        start : startDate,
+                        end : endDate,
+                    };
+
+                    educationalExperienceInformation.push(informationCollection);
+                    resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate);
+                    setCreateCard(true);
+                }}>Save</button>
             </div>
         </div>
     )
