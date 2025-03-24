@@ -7,14 +7,13 @@ import EditorGeneralInformation from './EditorGeneralInformation.jsx';
 import EditorEducationalExperience from './EditorEducationalExperience.jsx';
 import EditorWorkExperience from './EditorWorkExperience.jsx';
 
-
 function App() {
   const [resumeNameValue, setResumeNameValue] = useState('');
   const [resumeJobTitleValue, setResumeJobTitleValue] = useState('');
   const [resumeEmailValue, setResumeEmailValue] = useState('');
   const [resumePhoneValue, setResumePhoneValue] = useState(null);
 
-  const [resumeEducationalValues, setResumeEducationalValues] = useState(['','','','']);
+  const [resumeEducationalValues, setResumeEducationalValues] = useState(['','','','']); //turn into an array of objects
 
   function updateResumeGeneralInformation(identifier, newValue) {
     if(identifier == 'name') setResumeNameValue(newValue);
@@ -31,7 +30,7 @@ function App() {
         <EditorWorkExperience />
       </ResumeEditor>
       <Resume>
-        <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue}/>
+        <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue} />
         <ResumeEducationalInformation educationalValues={resumeEducationalValues} />
       </Resume>
     </>
