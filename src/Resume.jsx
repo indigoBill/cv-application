@@ -18,13 +18,13 @@ function ResumeEducationalInformation({educationalValues}) {
     const endDateValue = educationalValues[3];
     let dash = '';
 
-    if(startDateValue && endDateValue !== '') dash = '-';
+    if(startDateValue && endDateValue != null) dash = '-';
 
     return (
         <>
             <h1>{schoolNameValue}</h1>
             <h2>{titleOfStudyValue}</h2>
-            <h2>{startDateValue + dash + endDateValue}</h2>
+            <h2>{startDateValue}{dash}{endDateValue}</h2>
         </>
     )
 }
