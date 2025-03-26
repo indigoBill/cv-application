@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-let schoolName, titleOfStudy, startDate, endDate;
 const educationalExperienceInformation = [];
 
 function EducationalExperienceCard({ fields, addEducation }) {
@@ -15,13 +14,14 @@ function EducationalExperienceCard({ fields, addEducation }) {
 
 function EditorEducationalExperience({ resumeEducationalInformation }) {
     const [createCard, setCreateCard] = useState(false);
+    let schoolName, titleOfStudy, startDate, endDate;
 
     if(createCard) {
         return (
             <div className='general-style'>
                 {
-                    educationalExperienceInformation.map((information, index) => {
-                        return <EducationalExperienceCard key={index} fields={information} addEducation={() => setCreateCard(false)} />
+                    educationalExperienceInformation.map((information) => {
+                        return <EducationalExperienceCard key={information.id} fields={information} addEducation={() => setCreateCard(false)} />
                     })
                 }
             </div>
@@ -58,10 +58,12 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
                         major : titleOfStudy,
                         start : startDate,
                         end : endDate,
+                        id : crypto.randomUUID(),
                     };
 
                     educationalExperienceInformation.push(informationCollection);
-                    resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate);
+                    //resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate);
+                    resumeEducationalInformation(educationalExperienceInformation);
                     setCreateCard(true);
                 }}>Save</button>
             </div>
