@@ -1,29 +1,55 @@
 import { useState } from 'react';
 
 const educationalExperienceInformation = [];
+let valuesUpdated = false;
 
-function EducationalExperienceCard({ fields, addEducation }) {
+function updateEducationalExperience(event, previousValues, updatePreviousValues) {
+    const newFieldValues = (event.target.id == 'school-name') ? 
+    {...previousValues, schoolName : event.target.value} :
+    (event.target.id == 'title-of-study') ?
+    {...previousValues, titleOfStudy : event.target.value} :
+    (event.target.id == 'school-start-date') ?
+    {...previousValues, startDate : event.target.value} : {...previousValues, endDate : event.target.value};
+
+    updatePreviousValues(newFieldValues);
+
+    //valuesUpdated = true;
+}
+
+function EducationalExperienceCard({ fields, editValues }) {
     return (
         <div>
             <h2>{fields.school}</h2>
-            <button>Edit</button>
-            <button className='add-school-btn' onClick={() => addEducation(true)}>Add Education</button>
+            <button onClick={() => {
+                valuesUpdated = true;
+                editValues(fields.school, fields.major, fields.start, fields.end);
+            }}>Edit</button>
         </div>
-    )
+    );
 }
 
 function EditorEducationalExperience({ resumeEducationalInformation }) {
     const [createCard, setCreateCard] = useState(false);
-    let schoolName, titleOfStudy, startDate, endDate;
+    const [fieldValues, setFieldValues] = useState({schoolName : '', titleOfStudy : '', startDate : '', endDate : '', id : ''});
 
     if(createCard) {
         return (
             <div className='general-style'>
                 {
                     educationalExperienceInformation.map((information) => {
-                        return <EducationalExperienceCard key={information.id} fields={information} addEducation={() => setCreateCard(false)} />
+                        return <EducationalExperienceCard key={information.id} fields={information} editValues={(school, major, start, end) => {
+                                // fieldValues.schoolName = school;
+                                // fieldValues.titleOfStudy = major;
+                                // fieldValues.startDate = start;
+                                // fieldValues.endDate = end;
+                                // fieldValues.id = information.id;
+                                setFieldValues({schoolName : school, titleOfStudy : major, startDate : start, endDate : end, id : information.id});
+                                setCreateCard(false);
+                            }
+                        } />
                     })
                 }
+                <button className='add-school-btn' onClick={() => setCreateCard(false)}>Add Education</button>
             </div>
         );
     }
@@ -34,41 +60,63 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
             <div className='educational-info'>
                 <div>
                     <label htmlFor="school-name">School Name:</label>
-                    <input type="text" id="school-name" name="school-name" onChange={(e) => schoolName = e.target.value}/>
+                    <input type="text" id="school-name" name="school-name" onChange={(e) => {
+                        // const newFieldValues = {...fieldValues, schoolName : e.target.value};
+                        // setFieldValues(newFieldValues);
+                        updateEducationalExperience(e, fieldValues, setFieldValues);
+                    }} value={fieldValues.schoolName} />
                 </div>
                 <div>
                     <label htmlFor="title-of-study">Title of Study:</label>
-                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => titleOfStudy = e.target.value} />
+                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => {
+                        const newFieldValues = {...fieldValues, titleOfStudy : e.target.value};
+                        setFieldValues(newFieldValues);
+                    }} value={fieldValues.titleOfStudy} />
                 </div>
                 <div className='educational-date-range'>
                     <div>
                         <label htmlFor="school-start-date">Start Date:</label>
-                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => startDate = e.target.value} />
+                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => {
+                            const newFieldValues = {...fieldValues, startDate : e.target.value};
+                            setFieldValues(newFieldValues);
+                        }} value={fieldValues.startDate} />
                     </div>
                     <div>
                         <label htmlFor="school-end-date">End Date:</label>
-                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => endDate = e.target.value} />
+                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => {
+                            const newFieldValues = {...fieldValues, endDate : e.target.value};
+                            setFieldValues(newFieldValues);
+                        }} value={fieldValues.endDate} />
                     </div>
                 </div>
             </div>
             <div className='edit-btns-container'>
                 <button className='save-school-btn' onClick={() => {
-                    const informationCollection = {
-                        school : schoolName,
-                        major : titleOfStudy,
-                        start : startDate,
-                        end : endDate,
-                        id : crypto.randomUUID(),
-                    };
+                    if(valuesUpdated) {
+                        educationalExperienceInformation.forEach(information => {
+                           if(information.id === fieldValues.id) {
+                            information = {...fieldValues};
+                           }
 
-                    educationalExperienceInformation.push(informationCollection);
-                    //resumeEducationalInformation(schoolName, titleOfStudy, startDate, endDate);
+                        });
+                    }else {
+                        const informationCollection = {
+                            school : fieldValues.schoolName,
+                            major : fieldValues.titleOfStudy,
+                            start : fieldValues.startDate,
+                            end : fieldValues.endDate,
+                            id : crypto.randomUUID(),
+                        };
+    
+                        educationalExperienceInformation.push(informationCollection);
+                    }
+                    console.log(educationalExperienceInformation);
                     resumeEducationalInformation(educationalExperienceInformation);
                     setCreateCard(true);
                 }}>Save</button>
             </div>
         </div>
-    )
+    );
 }
 
 export default EditorEducationalExperience;
