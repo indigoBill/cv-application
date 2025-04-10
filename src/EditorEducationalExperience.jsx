@@ -56,33 +56,20 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
             <div className='educational-info'>
                 <div>
                     <label htmlFor="school-name">School Name:</label>
-                    <input type="text" id="school-name" name="school-name" onChange={(e) => {
-                        // const newFieldValues = {...fieldValues, schoolName : e.target.value};
-                        // setFieldValues(newFieldValues);
-                        updateEducationalExperience(e, fieldValues, setFieldValues);
-                    }} value={fieldValues.schoolName} />
+                    <input type="text" id="school-name" name="school-name" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.schoolName} />
                 </div>
                 <div>
                     <label htmlFor="title-of-study">Title of Study:</label>
-                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => {
-                        const newFieldValues = {...fieldValues, titleOfStudy : e.target.value};
-                        setFieldValues(newFieldValues);
-                    }} value={fieldValues.titleOfStudy} />
+                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.titleOfStudy} />
                 </div>
                 <div className='educational-date-range'>
                     <div>
                         <label htmlFor="school-start-date">Start Date:</label>
-                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => {
-                            const newFieldValues = {...fieldValues, startDate : e.target.value};
-                            setFieldValues(newFieldValues);
-                        }} value={fieldValues.startDate} />
+                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.startDate} />
                     </div>
                     <div>
                         <label htmlFor="school-end-date">End Date:</label>
-                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => {
-                            const newFieldValues = {...fieldValues, endDate : e.target.value};
-                            setFieldValues(newFieldValues);
-                        }} value={fieldValues.endDate} />
+                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.endDate} />
                     </div>
                 </div>
             </div>
