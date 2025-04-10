@@ -12,8 +12,6 @@ function updateEducationalExperience(event, previousValues, updatePreviousValues
     {...previousValues, startDate : event.target.value} : {...previousValues, endDate : event.target.value};
 
     updatePreviousValues(newFieldValues);
-
-    //valuesUpdated = true;
 }
 
 function EducationalExperienceCard({ fields, editValues }) {
@@ -38,18 +36,16 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
                 {
                     educationalExperienceInformation.map((information) => {
                         return <EducationalExperienceCard key={information.id} fields={information} editValues={(school, major, start, end) => {
-                                // fieldValues.schoolName = school;
-                                // fieldValues.titleOfStudy = major;
-                                // fieldValues.startDate = start;
-                                // fieldValues.endDate = end;
-                                // fieldValues.id = information.id;
                                 setFieldValues({schoolName : school, titleOfStudy : major, startDate : start, endDate : end, id : information.id});
                                 setCreateCard(false);
                             }
                         } />
                     })
                 }
-                <button className='add-school-btn' onClick={() => setCreateCard(false)}>Add Education</button>
+                <button className='add-school-btn' onClick={() => {
+                    setCreateCard(false);
+                    setFieldValues({schoolName : '', titleOfStudy : '', startDate : '', endDate : '', id : ''});
+                }}>Add Education</button>
             </div>
         );
     }
@@ -93,12 +89,10 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
             <div className='edit-btns-container'>
                 <button className='save-school-btn' onClick={() => {
                     if(valuesUpdated) {
-                        educationalExperienceInformation.forEach(information => {
-                           if(information.id === fieldValues.id) {
-                            information = {...fieldValues};
-                           }
-
-                        });
+                        const informationToUpdate = educationalExperienceInformation.find((information) => information.id == fieldValues.id);
+                        let index = educationalExperienceInformation.indexOf(informationToUpdate);
+                        educationalExperienceInformation.splice(index, 1, {school : fieldValues.schoolName, major : fieldValues.titleOfStudy, start : fieldValues.startDate, end : fieldValues.endDate, id : fieldValues.id});
+                        valuesUpdated = false;
                     }else {
                         const informationCollection = {
                             school : fieldValues.schoolName,
@@ -110,7 +104,6 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
     
                         educationalExperienceInformation.push(informationCollection);
                     }
-                    console.log(educationalExperienceInformation);
                     resumeEducationalInformation(educationalExperienceInformation);
                     setCreateCard(true);
                 }}>Save</button>
