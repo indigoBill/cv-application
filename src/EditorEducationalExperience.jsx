@@ -14,7 +14,7 @@ function updateEducationalExperience(event, previousValues, updatePreviousValues
     updatePreviousValues(newFieldValues);
 }
 
-function EducationalExperienceCard({ fields, editValues }) {
+function EducationalExperienceCard({ fields, editValues, removeCard }) {
     return (
         <div>
             <h2>{fields.school}</h2>
@@ -22,6 +22,12 @@ function EducationalExperienceCard({ fields, editValues }) {
                 valuesUpdated = true;
                 editValues(fields.school, fields.major, fields.start, fields.end);
             }}>Edit</button>
+            <button onClick={() => {
+                const cardToDelete = educationalExperienceInformation.find((information) => information.id == fields.id);
+                let index = educationalExperienceInformation.indexOf(cardToDelete);
+                educationalExperienceInformation.splice(index, 1);
+                removeCard();
+            }}>X</button>
         </div>
     );
 }
@@ -38,8 +44,13 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
                         return <EducationalExperienceCard key={information.id} fields={information} editValues={(school, major, start, end) => {
                                 setFieldValues({schoolName : school, titleOfStudy : major, startDate : start, endDate : end, id : information.id});
                                 setCreateCard(false);
-                            }
-                        } />
+                            }} removeCard={() => {
+                                resumeEducationalInformation(educationalExperienceInformation);
+                                if(educationalExperienceInformation.length == 0){
+                                    setCreateCard(false);
+                                    setFieldValues({schoolName : '', titleOfStudy : '', startDate : '', endDate : '', id : ''});
+                                }
+                            }} />
                     })
                 }
                 <button className='add-school-btn' onClick={() => {

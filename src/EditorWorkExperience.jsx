@@ -16,7 +16,7 @@ function updateWorkExperience(event, previousValues, updatePreviousValues) {
     updatePreviousValues(newFieldValues);
 }
 
-function WorkExperienceCard({ fields, editValues }) {
+function WorkExperienceCard({ fields, editValues, removeCard }) {
     return (
         <div>
             <h2>{fields.company}</h2>
@@ -24,6 +24,12 @@ function WorkExperienceCard({ fields, editValues }) {
                 valuesUpdated = true;
                 editValues(fields.company, fields.jobTitle, fields.start, fields.end, fields.responsibilities);
             }}>Edit</button>
+            <button onClick={() => {
+                const cardToDelete = workExperienceInformation.find((information) => information.id == fields.id);
+                let index = workExperienceInformation.indexOf(cardToDelete);
+                workExperienceInformation.splice(index, 1);
+                removeCard();
+            }}>X</button>
         </div>
     );
 }
@@ -40,8 +46,13 @@ function EditorWorkExperience({ resumeWorkInformation }) {
                         return <WorkExperienceCard key={information.id} fields={information} editValues={(company, jobTitle, start, end, responsibilities) => {
                                 setFieldValues({companyName : company, position : jobTitle, startDate : start, endDate : end, description : responsibilities, id : information.id});
                                 setCreateCard(false);
-                            }
-                        } />
+                            }} removeCard={() => {
+                                resumeWorkInformation(workExperienceInformation);
+                                if(workExperienceInformation.length == 0){
+                                    setCreateCard(false);
+                                    setFieldValues({companyName : '', position : '', startDate : '', endDate : '', description : '', id : ''});
+                                }
+                            }} />
                     }) 
                 }
                 <button className='add-work-btn' onClick={() => {
