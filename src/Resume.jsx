@@ -39,6 +39,34 @@ function ResumeEducationalInformation({educationalValues}) {
     )
 }
 
+function ResumeWorkInformation({workValues}) {
+    return (
+        <>
+            {
+                workValues.map((information) => {
+                    const companyNameValue = information.company;
+                    const positionValue = information.jobTitle;
+                    const startDateValue = information.start;
+                    const endDateValue = information.end;
+                    const description = information.responsibilities;
+                    let dash = '';
+        
+                    if(startDateValue && endDateValue != null) dash = '-';
+                    
+                    return (
+                        <div key={information.id}>
+                            <h1>{companyNameValue}</h1>
+                            <h2>{positionValue}</h2>
+                            <h2>{startDateValue}{dash}{endDateValue}</h2>
+                            <h2>{description}</h2>
+                        </div>
+                    )
+                })
+            }
+        </>
+    )
+}
+
 function Resume({ children }) {
     return (
         <div className='resume'>
@@ -47,4 +75,4 @@ function Resume({ children }) {
     )
 }
 
-export  {Resume, ResumeGeneralInformation, ResumeEducationalInformation};
+export  {Resume, ResumeGeneralInformation, ResumeEducationalInformation, ResumeWorkInformation};
