@@ -45,7 +45,7 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
                 <button className='add-school-btn' onClick={() => {
                     setCreateCard(false);
                     setFieldValues({schoolName : '', titleOfStudy : '', startDate : '', endDate : '', id : ''});
-                }}>Add Education</button>
+                }}>Add Educational Experience</button>
             </div>
         );
     }
