@@ -67,25 +67,25 @@ function EditorWorkExperience({ resumeWorkInformation }) {
         <div className='general-style'>
             <h3>WORK INFO</h3>
             <div className='work-info'>
-                <div>
+                <div className='input'>
                     <label htmlFor="company-name">Company Name:</label>
                     <input type="text" id="company-name" name="company-name" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.companyName} />
                 </div>
-                <div>
+                <div className='input'>
                     <label htmlFor="position">Position:</label>
                     <input type="text" id="position" name="position" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.position} />
                 </div>
                 <div className='work-date-range'>
-                    <div>
+                    <div className='input'>
                         <label htmlFor="work-start-date">Start Date:</label>
                         <input type="text" id="work-start-date" name="work-start-date" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.startDate} />
                     </div>
-                    <div>
+                    <div className='input'>
                         <label htmlFor="work-end-date">End Date:</label>
                         <input type="text" id="work-end-date" name="work-end-date" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.endDate} />
                     </div>
                 </div>
-                <div>
+                <div className='input'>
                     <label htmlFor="job-description">Description:</label>
                     <textarea type="text" id="job-description" name="job-description" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.description}></textarea>
                 </div>
