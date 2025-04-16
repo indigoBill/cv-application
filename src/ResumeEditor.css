@@ -3,19 +3,16 @@
     flex-direction: column;
     gap: 10px;
     height: 100%;
-    flex: 1;
-    align-items: center;
 }
 
 .general-style {
-    background-color: pink;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(41, 41, 41);
+    font-size: 18px;
     width: 600px;
-    text-align: center;
     border-radius: .5em;
     flex: 1;
+    padding: 10px;
 }
 
 .toggle-switch-container {
