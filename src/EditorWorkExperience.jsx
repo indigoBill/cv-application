@@ -65,23 +65,23 @@ function EditorWorkExperience({ resumeWorkInformation }) {
 
     return (
         <div className='general-style'>
-            <h3>WORK INFO</h3>
+            <h3>Work Experience</h3>
             <div className='work-info'>
                 <div className='input'>
-                    <label htmlFor="company-name">Company Name:</label>
+                    <label htmlFor="company-name">Company Name</label>
                     <input type="text" id="company-name" name="company-name" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.companyName} />
                 </div>
                 <div className='input'>
-                    <label htmlFor="position">Position:</label>
+                    <label htmlFor="position">Position</label>
                     <input type="text" id="position" name="position" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.position} />
                 </div>
                 <div className='work-date-range'>
                     <div className='input'>
-                        <label htmlFor="work-start-date">Start Date:</label>
+                        <label htmlFor="work-start-date">Start Date</label>
                         <input type="text" id="work-start-date" name="work-start-date" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.startDate} />
                     </div>
                     <div className='input'>
-                        <label htmlFor="work-end-date">End Date:</label>
+                        <label htmlFor="work-end-date">End Date</label>
                         <input type="text" id="work-end-date" name="work-end-date" onChange={(e) => updateWorkExperience(e, fieldValues, setFieldValues)} value={fieldValues.endDate} />
                     </div>
                 </div>
