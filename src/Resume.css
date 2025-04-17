@@ -1,10 +1,14 @@
 .resume {
-    background-color: orange;
+    background-color: white;
     height: 100%;
-    max-width: 80%;
+    max-width: 45%;
     width: 100%;
+    aspect-ratio: 1/2;
 }
 
 .general-info-section {
     position: absolute;
 }
+
+
+  
