@@ -1,7 +1,11 @@
+:root {
+  --main-color : rgb(231, 231, 231);
+}
+
 body, html {
   height: 100%;
   margin: 0;
-  background-color: rgb(231, 231, 231);
+  background-color: var(--main-color);
 }
 
 #root {
@@ -13,9 +17,5 @@ body, html {
   gap: 30px;
 }
 
-.input {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 10px;
-}
+
 
