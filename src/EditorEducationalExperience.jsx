@@ -16,7 +16,7 @@ function updateEducationalExperience(event, previousValues, updatePreviousValues
 
 function EducationalExperienceCard({ fields, editValues, removeCard }) {
     return (
-        <div>
+        <div className='educational-card'>
             <h2>{fields.school}</h2>
             <button onClick={() => {
                 valuesUpdated = true;
