@@ -7,18 +7,22 @@
     flex-direction: column;
     gap: 15px;
     height: 100%;
+    overflow-y: scroll;
+    direction: rtl;
+    scrollbar-color: white var(--main-color);
+    scrollbar-width: thin;
 }
 
 .general-style {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     color: rgb(41, 41, 41);
     font-size: 18px;
     width: 520px;
     border-radius: .5em;
-    flex: 1;
     padding: 10px;
+    direction: ltr;
 }
 
 input, textarea {
@@ -34,6 +38,7 @@ input {
 h3 {
     text-align: center;
     font-size: 25px;
+    grid-area: 1 / 1 / 1 / 4;
 }
 
 .input {
@@ -77,4 +82,11 @@ button:hover {
 .add-school-btn,
 .add-work-btn {
     align-self: center;
+}
+
+.delete-btn {
+    background-color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
 }
