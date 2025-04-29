@@ -22,12 +22,12 @@ function EducationalExperienceCard({ fields, editValues, removeCard }) {
                 valuesUpdated = true;
                 editValues(fields.school, fields.major, fields.start, fields.end);
             }}>Edit</button>
-            <button onClick={() => {
+            <button className='delete-btn' onClick={() => {
                 const cardToDelete = educationalExperienceInformation.find((information) => information.id == fields.id);
                 let index = educationalExperienceInformation.indexOf(cardToDelete);
                 educationalExperienceInformation.splice(index, 1);
                 removeCard();
-            }}>X</button>
+            }}>x</button>
         </div>
     );
 }
@@ -39,6 +39,7 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
     if(createCard) {
         return (
             <div className='general-style'>
+                <h3>Educational Experience</h3>
                 {
                     educationalExperienceInformation.map((information) => {
                         return <EducationalExperienceCard key={information.id} fields={information} editValues={(school, major, start, end) => {

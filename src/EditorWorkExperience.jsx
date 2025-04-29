@@ -24,12 +24,12 @@ function WorkExperienceCard({ fields, editValues, removeCard }) {
                 valuesUpdated = true;
                 editValues(fields.company, fields.jobTitle, fields.start, fields.end, fields.responsibilities);
             }}>Edit</button>
-            <button onClick={() => {
+            <button className='delete-btn' onClick={() => {
                 const cardToDelete = workExperienceInformation.find((information) => information.id == fields.id);
                 let index = workExperienceInformation.indexOf(cardToDelete);
                 workExperienceInformation.splice(index, 1);
                 removeCard();
-            }}>X</button>
+            }}>x</button>
         </div>
     );
 }
@@ -41,6 +41,7 @@ function EditorWorkExperience({ resumeWorkInformation }) {
     if(createCard) {
         return (
             <div className='general-style'>
+                <h3>Work Experience</h3>
                 {
                     workExperienceInformation.map((information) => {
                         return <WorkExperienceCard key={information.id} fields={information} editValues={(company, jobTitle, start, end, responsibilities) => {
