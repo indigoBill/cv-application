@@ -2,18 +2,29 @@ import './Resume.css';
 
 function ResumeGeneralInformation({ nameValue, jobTitleValue, emailValue, phoneValue }) {
     return (
-        <>
-            <h1 className='resume-name'>{nameValue}</h1>
-            <h2 className='resume-job-title'>{jobTitleValue}</h2>
-            <h2 className='resume-email'>{emailValue}</h2>
-            <h2 className='resume-phone'>{phoneValue}</h2>
-        </>
+        <div className='resume-general-information'>
+            <div>
+                <h1 className='resume-name'>{nameValue}</h1>
+                <div className='general-design'></div>
+            </div>
+            <div className='resume-information'>
+                <p className='resume-job-title'>{jobTitleValue}</p>
+                <div className='resume-contact-information'>
+                    <p className='resume-email'>{emailValue}</p>
+                    <p className='resume-phone'>{phoneValue}</p>
+                </div>
+            </div>
+        </div>
     )
 }
 
 function ResumeEducationalInformation({educationalValues}) {
     return (
         <>
+            <div className='resume-section-header'>
+                <h2>Education</h2>
+                <div className='education-header-design'></div>
+            </div>
             {
                 educationalValues.map((information) => {
                     const schoolNameValue = information.school;
