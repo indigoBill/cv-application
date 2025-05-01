@@ -19,7 +19,7 @@ function updateWorkExperience(event, previousValues, updatePreviousValues) {
 function WorkExperienceCard({ fields, editValues, removeCard }) {
     return (
         <div className='work-card'>
-            <h2>{fields.company}</h2>
+            <h4>{fields.company}</h4>
             <button onClick={() => {
                 valuesUpdated = true;
                 editValues(fields.company, fields.jobTitle, fields.start, fields.end, fields.responsibilities);
