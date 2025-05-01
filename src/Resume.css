@@ -1,14 +1,59 @@
 .resume {
     background-color: white;
-    height: 100%;
-    max-width: 45%;
+    max-width: 40%;
     width: 100%;
     aspect-ratio: 1/2;
+    padding: 40px 40px;
 }
 
 .general-info-section {
     position: absolute;
 }
 
+.resume-general-information div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resume-name, p {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.resume-name {
+    font-size: 36px;
+    min-width: 300px;
+}
+
+.resume-job-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.resume-contact-information {
+    display: flex;
+}
+
+.resume-email::after {
+    content: "|";
+    margin: 0 5px 0 5px;
+}
+
+p {
+    height: min-content;
+}
+
+.resume-section-header {
+    display: flex;
+    align-items: center;
+}
+
+.general-design,
+.education-header-design {
+    background-color: black;
+    height: 2px;
+    width: 100%;
+}
 
   
