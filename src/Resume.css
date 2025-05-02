@@ -3,7 +3,7 @@
     max-width: 40%;
     width: 100%;
     aspect-ratio: 1/2;
-    padding: 40px 40px;
+    padding: 40px;
 }
 
 .general-info-section {
@@ -14,6 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .resume-name, p {
@@ -23,7 +24,7 @@
 
 .resume-name {
     font-size: 36px;
-    min-width: 300px;
+    min-width: fit-content;
 }
 
 .resume-job-title {
@@ -44,11 +45,6 @@ p {
     height: min-content;
 }
 
-.resume-section-header {
-    display: flex;
-    align-items: center;
-}
-
 .general-design,
 .education-header-design {
     background-color: black;
@@ -56,4 +52,21 @@ p {
     width: 100%;
 }
 
+.section-header {
+    border-bottom: 2px solid black;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.education-section,
+.work-section {
+    margin-bottom: 10px;
+}
+
+.school-date,
+.work-date {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
   
