@@ -21,10 +21,7 @@ function ResumeGeneralInformation({ nameValue, jobTitleValue, emailValue, phoneV
 function ResumeEducationalInformation({educationalValues}) {
     return (
         <>
-            <div className='resume-section-header'>
-                <h2>Education</h2>
-                <div className='education-header-design'></div>
-            </div>
+            <h2 className='section-header'>EDUCATION:</h2>
             {
                 educationalValues.map((information) => {
                     const schoolNameValue = information.school;
@@ -33,13 +30,15 @@ function ResumeEducationalInformation({educationalValues}) {
                     const endDateValue = information.end;
                     let dash = '';
         
-                    if(startDateValue && endDateValue != null) dash = '-';
+                    if(startDateValue && endDateValue != '') dash = '-';
                     
                     return (
-                        <div key={information.id}>
-                            <h1>{schoolNameValue}</h1>
-                            <h2>{titleOfStudyValue}</h2>
-                            <h2>{startDateValue}{dash}{endDateValue}</h2>
+                        <div key={information.id} className='education-section'>
+                            <div className='school-date'>
+                                <p>{schoolNameValue}</p>
+                                <p>{startDateValue}{dash}{endDateValue}</p>
+                            </div>
+                            <p>{titleOfStudyValue}</p>
                         </div>
                     )
                 })
@@ -53,6 +52,7 @@ function ResumeEducationalInformation({educationalValues}) {
 function ResumeWorkInformation({workValues}) {
     return (
         <>
+            <h2 className='section-header'>WORK EXPERIENCE:</h2>
             {
                 workValues.map((information) => {
                     const companyNameValue = information.company;
@@ -62,14 +62,16 @@ function ResumeWorkInformation({workValues}) {
                     const description = information.responsibilities;
                     let dash = '';
         
-                    if(startDateValue && endDateValue != null) dash = '-';
+                    if(startDateValue && endDateValue != '') dash = '-';
                     
                     return (
-                        <div key={information.id}>
-                            <h1>{companyNameValue}</h1>
-                            <h2>{positionValue}</h2>
-                            <h2>{startDateValue}{dash}{endDateValue}</h2>
-                            <h2>{description}</h2>
+                        <div key={information.id} className='work-section'>
+                            <div className='work-date'>
+                                <p>{companyNameValue}</p>
+                                <p>{startDateValue}{dash}{endDateValue}</p>
+                            </div>
+                            <p>{positionValue}</p>
+                            <p>{description}</p>
                         </div>
                     )
                 })
