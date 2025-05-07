@@ -63,6 +63,10 @@ p {
     margin-bottom: 10px;
 }
 
+.work-section p:last-child {
+    white-space: pre;
+}
+
 .school-date,
 .work-date {
     display: flex;
