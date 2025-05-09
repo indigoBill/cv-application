@@ -2,6 +2,14 @@
     --main-color : rgb(231, 231, 231);
 }
 
+.hide {
+    display: none;
+}
+
+.reveal {
+    display: block;
+}
+
 .resume-editor {
     display: flex;
     flex-direction: column;
