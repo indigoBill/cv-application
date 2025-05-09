@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CustomizationPanel from './CustomizationPanel.jsx';
 import ResumeEditor from './ResumeEditor.jsx';
 import {Resume, ResumeGeneralInformation, ResumeEducationalInformation, ResumeWorkInformation} from './Resume.jsx';
 import './App.css';
@@ -16,6 +17,11 @@ function App() {
   const [resumeEducationalValues, setResumeEducationalValues] = useState([]);
   const [resumeWorkValues, setResumeWorkValues] = useState([]);
 
+  const [displayCustomPanel, setDisplayCustomPanel] = useState(false);
+
+  let defaultEditorDisplayCondition = 'reveal';
+  let customizationEditorDisplayCondition = 'hide';
+
   function updateResumeGeneralInformation(identifier, newValue) {
     if(identifier == 'name') setResumeNameValue(newValue);
     if(identifier == 'job-title') setResumeJobTitleValue(newValue);
@@ -23,18 +29,36 @@ function App() {
     if(identifier == 'phone-number') setResumePhoneValue(newValue);
   }
 
+  if(displayCustomPanel) {
+    defaultEditorDisplayCondition = 'hide';
+    customizationEditorDisplayCondition = 'reveal';
+  }
+
   return (
     <>
+      <CustomizationPanel displayPanel={() => {
+        if(displayCustomPanel){
+          setDisplayCustomPanel(false);
+        }else{
+          setDisplayCustomPanel(true);
+        }
+        }
+      } />
       <ResumeEditor>
-        <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
-        <EditorEducationalExperience resumeEducationalInformation={(educationalInformation) => {
-          const newEducationalExperience = [...educationalInformation];
-          setResumeEducationalValues(newEducationalExperience);
-        }} />
-        <EditorWorkExperience resumeWorkInformation={(workInformation) => {
-          const newWorkExperience = [...workInformation];
-          setResumeWorkValues(newWorkExperience);
-        }}/>
+        <div className={defaultEditorDisplayCondition}>
+          <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
+          <EditorEducationalExperience resumeEducationalInformation={(educationalInformation) => {
+            const newEducationalExperience = [...educationalInformation];
+            setResumeEducationalValues(newEducationalExperience);
+          }} />
+          <EditorWorkExperience resumeWorkInformation={(workInformation) => {
+            const newWorkExperience = [...workInformation];
+            setResumeWorkValues(newWorkExperience);
+          }}/>
+        </div>
+        <div className={customizationEditorDisplayCondition}>
+          {/* ADD RESUME ADD-ONS */}
+        </div>
       </ResumeEditor>
       <Resume>
         <ResumeGeneralInformation nameValue={resumeNameValue} jobTitleValue={resumeJobTitleValue} emailValue={resumeEmailValue} phoneValue={resumePhoneValue} />
