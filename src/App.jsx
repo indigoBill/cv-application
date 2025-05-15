@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import CustomizationPanel from './CustomizationPanel.jsx';
+import CustomizationSection from './CustomizationSection.jsx';
 import ResumeEditor from './ResumeEditor.jsx';
 import {Resume, ResumeGeneralInformation, ResumeEducationalInformation, ResumeWorkInformation} from './Resume.jsx';
 import './App.css';
@@ -57,7 +58,8 @@ function App() {
           }}/>
         </div>
         <div className={customizationEditorDisplayCondition}>
-          {/* ADD RESUME ADD-ONS */}
+          <CustomizationSection />
+          <div>COLOR</div>
         </div>
       </ResumeEditor>
       <Resume>
