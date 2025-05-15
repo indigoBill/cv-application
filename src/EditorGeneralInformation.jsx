@@ -4,8 +4,8 @@ import './Resume.css';
 function EditorGeneralInformation({ resumeGeneralInformation }) {
   
     return (
-        <>
-            <div className='general-style general-info'>
+
+        <div className='general-style general-info'>
             <h3>General Information</h3>
             <div className='input'>
                 <label htmlFor="name">Name</label>
@@ -23,8 +23,8 @@ function EditorGeneralInformation({ resumeGeneralInformation }) {
                 <label htmlFor="phone-number">Phone</label>
                 <input type="tel" id="phone-number" name="phone-number" onChange={(e) => resumeGeneralInformation(e.target.id, e.target.value)} />
             </div>
-            </div>
-        </>
+        </div>
+    
     )
 }
 
