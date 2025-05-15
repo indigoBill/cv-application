@@ -7,13 +7,12 @@
 }
 
 .reveal {
-    display: block;
-}
-
-.resume-editor {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.resume-editor {
     height: 100%;
     overflow-y: scroll;
     direction: rtl;
