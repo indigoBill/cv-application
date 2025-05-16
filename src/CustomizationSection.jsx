@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function CustomizationSection() {
     const [skills, setSkills] = useState([]);
-    let skill;
+    const [fieldValue, setFieldValue] = useState('');
 
     return (
     
@@ -21,11 +21,12 @@ function CustomizationSection() {
                         })
                     }
                 </ul>
-                <input type="text" id="skill" name="skill" onChange={(e) => skill = e.target.value} />
+                <input type="text" id="skill" name="skill" onChange={(e) => setFieldValue(e.target.value)} value={fieldValue} />
                 <button onClick={() => {
-                    if(skill != ''){
-                        const newSkills = [...skills, {skillName : skill, id : crypto.randomUUID()}];
+                    if(fieldValue != ''){
+                        const newSkills = [...skills, {skillName : fieldValue, id : crypto.randomUUID()}];
                         setSkills(newSkills);
+                        setFieldValue('');
                     }
                 }}>Add</button>
             </div>
