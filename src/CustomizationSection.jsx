@@ -5,6 +5,15 @@ function CustomizationSection() {
     const [skills, setSkills] = useState([]);
     const [fieldValue, setFieldValue] = useState('');
 
+    function removeSkill(id){
+        const listOfSkills = [...skills];
+    
+        let indexToRemove = listOfSkills.findIndex((currentSkill) => currentSkill.id === id);
+        listOfSkills.splice(indexToRemove, 1);
+    
+        setSkills(listOfSkills);
+    }
+
     return (
     
         <div className='general-style'>
@@ -17,7 +26,12 @@ function CustomizationSection() {
                 <ul className="skill-container">
                     {
                         skills.map((skillItem) => {
-                            return <li key={skillItem.id}>{skillItem.skillName}</li>
+                            return (
+                                <div key={skillItem.id}>
+                                    <li>{skillItem.skillName}</li>
+                                    <button onClick={() => removeSkill(skillItem.id)}>x</button>
+                                </div>
+                            )
                         })
                     }
                 </ul>
