@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function CustomizationSection() {
+function CustomizationSection({ resumeObjectiveInformation }) {
     const [skills, setSkills] = useState([]);
     const [fieldValue, setFieldValue] = useState('');
 
@@ -19,7 +19,7 @@ function CustomizationSection() {
         <div className='general-style'>
             <div>
                 <h3>Objective</h3>
-                <textarea name="objective" id="objective"></textarea>
+                <textarea name="objective" id="objective" onChange={(e) => resumeObjectiveInformation(e.target.value)}></textarea>
             </div>
             <div>
                 <h3>Skills</h3>

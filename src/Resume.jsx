@@ -18,6 +18,17 @@ function ResumeGeneralInformation({ nameValue, jobTitleValue, emailValue, phoneV
     )
 }
 
+function ResumeObjectiveInformation({objective}) {
+    if(objective !== ''){
+        return (
+            <>
+                <h2 className='section-header'>OBJECTIVE:</h2>
+                <p>{objective}</p>
+            </>
+        )
+    }
+}
+
 function ResumeEducationalInformation({educationalValues}) {
     return (
         <>
@@ -88,4 +99,4 @@ function Resume({ children }) {
     )
 }
 
-export  {Resume, ResumeGeneralInformation, ResumeEducationalInformation, ResumeWorkInformation};
+export  {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation};
