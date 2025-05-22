@@ -29,7 +29,13 @@ function App() {
     if(identifier == 'name') setResumeNameValue(newValue);
     if(identifier == 'job-title') setResumeJobTitleValue(newValue);
     if(identifier == 'email') setResumeEmailValue(newValue);
-    if(identifier == 'phone-number') setResumePhoneValue(newValue);
+    if(identifier == 'phone-number'){
+      if(newValue !== ''){
+        setResumePhoneValue(`| ${newValue}`);
+      }else{
+        setResumePhoneValue(newValue);
+      }
+    }
   }
 
   if(displayCustomPanel) {

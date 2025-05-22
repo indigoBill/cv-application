@@ -36,8 +36,7 @@
     display: flex;
 }
 
-.resume-email::after {
-    content: "|";
+.resume-email {
     margin: 0 5px 0 5px;
 }
 
