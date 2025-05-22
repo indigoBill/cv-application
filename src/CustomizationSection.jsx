@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function CustomizationSection({ resumeObjectiveInformation }) {
+function CustomizationSection({ resumeObjectiveInformation, resumeSkillsInformation }) {
     const [skills, setSkills] = useState([]);
     const [fieldValue, setFieldValue] = useState('');
 
@@ -12,6 +12,7 @@ function CustomizationSection({ resumeObjectiveInformation }) {
         listOfSkills.splice(indexToRemove, 1);
     
         setSkills(listOfSkills);
+        resumeSkillsInformation(listOfSkills);
     }
 
     return (
@@ -40,6 +41,7 @@ function CustomizationSection({ resumeObjectiveInformation }) {
                     if(fieldValue != ''){
                         const newSkills = [...skills, {skillName : fieldValue, id : crypto.randomUUID()}];
                         setSkills(newSkills);
+                        resumeSkillsInformation(newSkills);
                         setFieldValue('');
                     }
                 }}>Add</button>

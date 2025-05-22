@@ -91,6 +91,23 @@ function ResumeWorkInformation({workValues}) {
     )
 }
 
+function ResumeSkillsInformation({skillValues}) {
+    if(skillValues.length != 0){
+        return (
+            <>
+                <h2 className='section-header'>SKILLS:</h2>
+                {
+                    skillValues.map((information) => {
+                        return (
+                            <div key={information.id}>{information.skillName}</div>
+                        )
+                    })
+                }
+            </>
+        )
+    }
+}
+
 function Resume({ children }) {
     return (
         <div className='resume'>
@@ -99,4 +116,4 @@ function Resume({ children }) {
     )
 }
 
-export  {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation};
+export  {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation, ResumeSkillsInformation};

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CustomizationPanel from './CustomizationPanel.jsx';
 import CustomizationSection from './CustomizationSection.jsx';
 import ResumeEditor from './ResumeEditor.jsx';
-import {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation} from './Resume.jsx';
+import {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation, ResumeSkillsInformation} from './Resume.jsx';
 import './App.css';
 
 import EditorGeneralInformation from './EditorGeneralInformation.jsx';
@@ -20,6 +20,7 @@ function App() {
   const [resumeWorkValues, setResumeWorkValues] = useState([]);
 
   const [displayCustomPanel, setDisplayCustomPanel] = useState(false);
+  const [resumeSkills, setResumeSkills] = useState([]);
 
   let defaultEditorDisplayCondition = 'reveal';
   let customizationEditorDisplayCondition = 'hide';
@@ -59,7 +60,7 @@ function App() {
           }}/>
         </div>
         <div className={customizationEditorDisplayCondition}>
-          <CustomizationSection resumeObjectiveInformation={(value) => setResumeObjective(value)} />
+          <CustomizationSection resumeObjectiveInformation={(value) => setResumeObjective(value)} resumeSkillsInformation={(value) => setResumeSkills(value)} />
           <div>COLOR</div>
         </div>
       </ResumeEditor>
@@ -68,6 +69,7 @@ function App() {
         <ResumeObjectiveInformation objective={resumeObjective} />
         <ResumeEducationalInformation educationalValues={resumeEducationalValues} />
         <ResumeWorkInformation workValues={resumeWorkValues} />
+        <ResumeSkillsInformation skillValues={resumeSkills} />
       </Resume>
     </>
   )
