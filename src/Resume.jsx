@@ -96,13 +96,16 @@ function ResumeSkillsInformation({skillValues}) {
         return (
             <>
                 <h2 className='section-header'>SKILLS:</h2>
-                {
-                    skillValues.map((information) => {
-                        return (
-                            <div key={information.id}>{information.skillName}</div>
-                        )
-                    })
-                }
+                <ul>
+                    {
+                        skillValues.map((information) => {
+                            return (
+                                <li key={information.id}>{information.skillName}</li>
+                            )
+                        })
+                    }
+                </ul>
+                
             </>
         )
     }
