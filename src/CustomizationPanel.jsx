@@ -1,8 +1,8 @@
-function CustomizationPanel({ displayPanel }) {
+function CustomizationPanel({ displayPanel, displaySample }) {
     return (
         <div>
             <button onClick={displayPanel}>Customize</button>
-            <button>Load Sample</button>
+            <button onClick={displaySample}>Load Sample</button>
             <button>Clear</button>
         </div>
     )
