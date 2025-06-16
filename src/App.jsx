@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CustomizationPanel from './CustomizationPanel.jsx';
 import CustomizationSection from './CustomizationSection.jsx';
 import ResumeEditor from './ResumeEditor.jsx';
-import {Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation, ResumeSkillsInformation} from './Resume.jsx';
+import { Resume, ResumeGeneralInformation, ResumeObjectiveInformation, ResumeEducationalInformation, ResumeWorkInformation, ResumeSkillsInformation } from './Resume.jsx';
 import './App.css';
 
 import EditorGeneralInformation from './EditorGeneralInformation.jsx';
@@ -38,6 +38,23 @@ function App() {
     }
   }
 
+  function loadSample() {
+    const nameInput = document.querySelector('#name');
+    const jobInput = document.querySelector('#job-title');
+    const emailInput = document.querySelector('#email');
+    const phoneInput = document.querySelector('#phone-number');
+  
+    nameInput.value = 'Danielle Peters';
+    jobInput.value = 'Front-End Developer';
+    emailInput.value = 'email@gmail.com';
+    phoneInput.value = '123-456-7890';
+
+    updateResumeGeneralInformation('name', nameInput.value);
+    updateResumeGeneralInformation('job-title', jobInput.value);
+    updateResumeGeneralInformation('email', emailInput.value);
+    updateResumeGeneralInformation('phone-number', phoneInput.value);
+  }
+
   if(displayCustomPanel) {
     defaultEditorDisplayCondition = 'hide';
     customizationEditorDisplayCondition = 'reveal';
@@ -51,8 +68,10 @@ function App() {
         }else{
           setDisplayCustomPanel(true);
         }
-        }
-      } />
+        }} 
+      
+        displaySample={(() => loadSample())}
+      />
       <ResumeEditor>
         <div className={defaultEditorDisplayCondition}>
           <EditorGeneralInformation resumeGeneralInformation={(id, value) => updateResumeGeneralInformation(id, value) } />
