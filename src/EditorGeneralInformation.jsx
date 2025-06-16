@@ -28,5 +28,4 @@ function EditorGeneralInformation({ resumeGeneralInformation }) {
     )
 }
 
-
 export default EditorGeneralInformation;
