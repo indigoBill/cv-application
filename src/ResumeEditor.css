@@ -96,3 +96,26 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
 }
+
+#objective {
+    width: 100%;
+}
+
+.add-skills,
+.skill {
+    display: flex;
+    gap: 10px;
+}
+
+.skill {
+    margin-bottom: 10px;
+}
+
+#skill {
+    flex: 1;
+}
+
+.remove-skill-btn {
+    height: fit-content;
+}
+
