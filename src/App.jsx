@@ -38,22 +38,45 @@ function App() {
     }
   }
 
-  function loadSample() {
-    const nameInput = document.querySelector('#name');
-    const jobInput = document.querySelector('#job-title');
-    const emailInput = document.querySelector('#email');
-    const phoneInput = document.querySelector('#phone-number');
-  
-    nameInput.value = 'Danielle Peters';
-    jobInput.value = 'Front-End Developer';
-    emailInput.value = 'email@gmail.com';
-    phoneInput.value = '123-456-7890';
+  // function loadSample() {
+  //   const nameInput = document.querySelector('#name');
+  //   const jobInput = document.querySelector('#job-title');
+  //   const emailInput = document.querySelector('#email');
+  //   const phoneInput = document.querySelector('#phone-number');
 
-    updateResumeGeneralInformation('name', nameInput.value);
-    updateResumeGeneralInformation('job-title', jobInput.value);
-    updateResumeGeneralInformation('email', emailInput.value);
-    updateResumeGeneralInformation('phone-number', phoneInput.value);
-  }
+  //   const schoolInput = document.querySelector('#school-name');
+  //   const titleOfStudy = document.querySelector('#title-of-study');
+  //   const schoolStartInput = document.querySelector('#school-start-date');
+  //   const schoolEndInput = document.querySelector('#school-end-date');
+  //   const saveBtn = document.querySelector('.save-school-btn');
+  
+  //   nameInput.value = 'Danielle Peters';
+  //   jobInput.value = 'Front-End Developer';
+  //   emailInput.value = 'email@gmail.com';
+  //   phoneInput.value = '123-456-7890';
+
+  //   const evt = new Event('input', { bubbles: false , cancelable: false});
+
+  //   schoolInput.value = 'Johns Hopkins University';
+  //   titleOfStudy.value = 'Accounting';
+  //   schoolStartInput.value = '09/2010';
+  //   schoolEndInput.value = '06/2014';
+
+    
+  //   schoolInput.dispatchEvent(evt);
+
+  //   // titleOfStudy.dispatchEvent(evt);
+    
+    
+  //   // setTimeout(() => {
+  //   //   saveBtn.click();
+  //   // },100);
+
+  //   updateResumeGeneralInformation('name', nameInput.value);
+  //   updateResumeGeneralInformation('job-title', jobInput.value);
+  //   updateResumeGeneralInformation('email', emailInput.value);
+  //   updateResumeGeneralInformation('phone-number', phoneInput.value);
+  // }
 
   if(displayCustomPanel) {
     defaultEditorDisplayCondition = 'hide';
@@ -70,7 +93,7 @@ function App() {
         }
         }} 
       
-        displaySample={(() => loadSample())}
+        //displaySample={(() => loadSample())}
       />
       <ResumeEditor>
         <div className={defaultEditorDisplayCondition}>
@@ -86,7 +109,7 @@ function App() {
         </div>
         <div className={customizationEditorDisplayCondition}>
           <CustomizationSection resumeObjectiveInformation={(value) => setResumeObjective(value)} resumeSkillsInformation={(value) => setResumeSkills(value)} />
-          <div>COLOR</div>
+          {/* <div>COLOR</div> */}
         </div>
       </ResumeEditor>
       <Resume>
