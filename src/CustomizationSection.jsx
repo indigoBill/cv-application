@@ -28,23 +28,25 @@ function CustomizationSection({ resumeObjectiveInformation, resumeSkillsInformat
                     {
                         skills.map((skillItem) => {
                             return (
-                                <div key={skillItem.id}>
+                                <div key={skillItem.id} className='skill'>
                                     <li>{skillItem.skillName}</li>
-                                    <button onClick={() => removeSkill(skillItem.id)}>x</button>
+                                    <button className='remove-skill-btn' onClick={() => removeSkill(skillItem.id)}>x</button>
                                 </div>
                             )
                         })
                     }
                 </ul>
-                <input type="text" id="skill" name="skill" onChange={(e) => setFieldValue(e.target.value)} value={fieldValue} />
-                <button onClick={() => {
-                    if(fieldValue != ''){
-                        const newSkills = [...skills, {skillName : fieldValue, id : crypto.randomUUID()}];
-                        setSkills(newSkills);
-                        resumeSkillsInformation(newSkills);
-                        setFieldValue('');
-                    }
-                }}>Add</button>
+                <div className='add-skills'>
+                    <input type="text" id="skill" name="skill" onChange={(e) => setFieldValue(e.target.value)} value={fieldValue} />
+                    <button onClick={() => {
+                        if(fieldValue != ''){
+                            const newSkills = [...skills, {skillName : fieldValue, id : crypto.randomUUID()}];
+                            setSkills(newSkills);
+                            resumeSkillsInformation(newSkills);
+                            setFieldValue('');
+                        }
+                    }}>Add</button>
+                </div>
             </div>
         </div>
         
