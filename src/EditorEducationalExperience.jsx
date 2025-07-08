@@ -68,20 +68,20 @@ function EditorEducationalExperience({ resumeEducationalInformation }) {
             <div className='educational-info'>
                 <div className='input'>
                     <label htmlFor="school-name">School Name</label>
-                    <input type="text" id="school-name" name="school-name" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.schoolName} />
+                    <input type="text" id="school-name" name="school-name" onInput={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.schoolName} />
                 </div>
                 <div className='input'>
                     <label htmlFor="title-of-study">Title of Study</label>
-                    <input type="text" id="title-of-study" name="title-of-study" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.titleOfStudy} />
+                    <input type="text" id="title-of-study" name="title-of-study" onInput={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.titleOfStudy} />
                 </div>
                 <div className='educational-date-range'>
                     <div className='input'>
                         <label htmlFor="school-start-date">Start Date</label>
-                        <input type="text" id="school-start-date" name="school-start-date" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.startDate} />
+                        <input type="text" id="school-start-date" name="school-start-date" onInput={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.startDate} />
                     </div>
                     <div className='input'>
                         <label htmlFor="school-end-date">End Date</label>
-                        <input type="text" id="school-end-date" name="school-end-date" onChange={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.endDate} />
+                        <input type="text" id="school-end-date" name="school-end-date" onInput={(e) => updateEducationalExperience(e, fieldValues, setFieldValues)} value={fieldValues.endDate} />
                     </div>
                 </div>
             </div>
