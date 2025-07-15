@@ -119,3 +119,7 @@ button:hover {
     height: fit-content;
 }
 
+.customization-btns button:hover {
+    border: 2px solid rgb(63, 62, 62);
+}
+
